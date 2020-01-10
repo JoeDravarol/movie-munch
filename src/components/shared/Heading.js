@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components'
 
 const baseStyle = css`
     margin-bottom: ${({ noMargin }) => noMargin && '0'};
+    margin-top: ${({ noMargin }) => noMargin && '0'};
     color: #f9ffff;
     font-weight: 600;
     font-size: ${({ fontSize }) => fontSize && fontSize};
