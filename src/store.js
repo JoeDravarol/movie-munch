@@ -1,13 +1,13 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import createMovieWithNamedType from './reducers/createMovieWithNamedType'
+import createMovieReducerWithNamedType from './reducers/movieReducer'
 
 const reducer = combineReducers({
-  nowPlaying: createMovieWithNamedType('now_playing'),
-  popular: createMovieWithNamedType('popular'),
-  upcoming: createMovieWithNamedType('upcoming'),
-  topRated: createMovieWithNamedType('top_rated'),
+  nowPlaying: createMovieReducerWithNamedType('now_playing'),
+  popular: createMovieReducerWithNamedType('popular'),
+  upcoming: createMovieReducerWithNamedType('upcoming'),
+  topRated: createMovieReducerWithNamedType('top_rated'),
 })
 
 const store = createStore(reducer, composeWithDevTools(
