@@ -6,15 +6,15 @@ import Anchor from '../shared/Anchor'
 import Container from './Container'
 import MoviesContainer from './MoviesContainer'
 
-const MovieList = (props) => {
+const MovieList = ({ movies, categoryTitle, categoryLink }) => {
   const movieCards = () => {
     return movies.map((movie, idx) => {
-      if (props.categoryLink && idx > 4) return null;
+      if (categoryLink && idx > 4) return null;
 
       return (
         <MovieCard
           title={movie.title}
-          poster={`${IMAGE_URL}${movie.poster_path}`}
+          poster={`${'https://image.tmdb.org/t/p/w500' + movie.poster_path}`}
           rating={movie.vote_average}
           genres={movie.genre_ids}
         />
@@ -22,17 +22,17 @@ const MovieList = (props) => {
     })
   }
 
-  if (props.categoryLink) return (
+  if (categoryLink) return (
     <Container>
       <Header>
         <Heading.Two
           fontSize="32px"
           noMargin
         >
-          {props.categoryTitle}
+          {categoryTitle}
         </Heading.Two>
         <Anchor
-          href={props.categoryLink}
+          href={categoryLink}
           color="#f9ffff"
           hoverColor="#2D2D35"
         >
@@ -54,7 +54,7 @@ const MovieList = (props) => {
           fontSize="32px"
           noMargin
         >
-          {props.categoryTitle}
+          {categoryTitle}
         </Heading.Two>
       </Header>
       <MoviesContainer>
