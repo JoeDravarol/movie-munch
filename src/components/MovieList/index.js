@@ -3,7 +3,7 @@ import Header from './Header'
 import MovieCard from '../MovieCard'
 import Heading from '../shared/Heading'
 import Anchor from '../shared/Anchor'
-import Container from './Container'
+import Container from '../shared/Container'
 import MoviesContainer from './MoviesContainer'
 
 const MovieList = ({ movies, categoryTitle, categoryLink }) => {
@@ -23,7 +23,7 @@ const MovieList = ({ movies, categoryTitle, categoryLink }) => {
   }
 
   if (categoryLink) return (
-    <Container>
+    <Container as="section">
       <Header>
         <Heading.Two
           fontSize="32px"
@@ -48,7 +48,7 @@ const MovieList = ({ movies, categoryTitle, categoryLink }) => {
   )
 
   return (
-    <Container>
+    <Container as="section">
       <Header>
         <Heading.Two
           fontSize="32px"

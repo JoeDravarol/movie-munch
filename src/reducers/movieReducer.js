@@ -1,4 +1,4 @@
-import tmdbApi from '../../services/tmdb'
+import tmdbApi from '../services/tmdb'
 
 const initialState = {
   movies: [],
