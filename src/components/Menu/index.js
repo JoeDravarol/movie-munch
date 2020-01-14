@@ -2,26 +2,26 @@ import React from 'react'
 import Nav from './Nav'
 import UlElem from './UlElem'
 import ListElem from './ListElem'
-import Anchor from './Anchor'
+import Link from './Link'
 
 const Menu = (props) => {
   return (
     <Nav>
       <UlElem>
         <ListElem active>
-          <Anchor href="#">Discover</Anchor>
+          <Link to="/">Discover</Link>
         </ListElem>
         <ListElem>
-          <Anchor href="#">Now Playing</Anchor>
+          <Link to="/now_playing">Now Playing</Link>
         </ListElem>
         <ListElem>
-          <Anchor href="#">Popular</Anchor>
+          <Link to="/popular">Popular</Link>
         </ListElem>
         <ListElem>
-          <Anchor href="#">Upcoming</Anchor>
+          <Link to="/upcoming">Upcoming</Link>
         </ListElem>
         <ListElem>
-          <Anchor href="#">Top Rated</Anchor>
+          <Link to="/top_rated">Top Rated</Link>
         </ListElem>
       </UlElem>
     </Nav>

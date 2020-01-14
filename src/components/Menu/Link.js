@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import Anchor from '../shared/Anchor'
+import Link from '../shared/Link'
 
-export default styled(Anchor).attrs(props => ({
+export default styled(Link).attrs(props => ({
   fontSize: '18px',
   display: 'block'
 }))`

@@ -5,6 +5,6 @@ export default styled(Grid).attrs(props => ({
   as: 'section',
   columns: 'repeat(auto-fit, minmax(250px, 280px))',
   justifyContentBetween: true,
-  gap: props.gap ? props.gap : '50px'
+  gap: '50px 30px'
 }))`
 `

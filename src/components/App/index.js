@@ -4,8 +4,9 @@ import GlobalStyles from './GlobalStyles';
 import Wrapper from './Wrapper'
 import Menu from '../Menu'
 import Container from '../shared/Container'
-import Discover from '../Discover'
 import { getMovies } from '../../reducers/movieReducer';
+import Routes from '../Routes'
+import { BrowserRouter } from 'react-router-dom'
 
 function App() {
   const dispatch = useDispatch()
@@ -23,14 +24,16 @@ function App() {
 
   return (
     <Wrapper>
-      <GlobalStyles />
-      <Menu />
-      <Container
-        as="main"
-        margin="0 60px 30px"
-      >
-        <Discover />
-      </Container>
+      <BrowserRouter>
+        <GlobalStyles />
+        <Menu />
+        <Container
+          as="main"
+          margin="0 60px 30px"
+        >
+          <Routes />
+        </Container>
+      </BrowserRouter>
     </Wrapper>
   );
 }

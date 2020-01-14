@@ -2,7 +2,7 @@ import React from 'react'
 import Header from './Header'
 import MovieCard from '../MovieCard'
 import Heading from '../shared/Heading'
-import Anchor from '../shared/Anchor'
+import Link from '../shared/Link'
 import Container from '../shared/Container'
 import MoviesContainer from './MoviesContainer'
 
@@ -31,17 +31,15 @@ const MovieList = ({ movies, categoryTitle, categoryLink }) => {
         >
           {categoryTitle}
         </Heading.Two>
-        <Anchor
-          href={categoryLink}
+        <Link
+          to={categoryLink}
           color="#f9ffff"
           hoverColor="#2D2D35"
         >
           See All
-          </Anchor>
+        </Link>
       </Header>
-      <MoviesContainer
-        gap="50px 30px"
-      >
+      <MoviesContainer>
         {movieCards()}
       </MoviesContainer>
     </Container>
