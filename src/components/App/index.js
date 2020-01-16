@@ -7,6 +7,7 @@ import Container from '../shared/Container'
 import { getMovies } from '../../reducers/movieReducer';
 import Routes from '../Routes'
 import { BrowserRouter } from 'react-router-dom'
+import ScrollMemory from 'react-router-scroll-memory'
 
 function App() {
   const dispatch = useDispatch()
@@ -25,6 +26,7 @@ function App() {
   return (
     <Wrapper>
       <BrowserRouter>
+        <ScrollMemory />
         <GlobalStyles />
         <Menu />
         <Container
