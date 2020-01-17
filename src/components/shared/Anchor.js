@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export default styled.a.attrs(props => ({
   color: props.color || 'inherit',
-  hoverColor: props.hoverColor || '#f9ffff',
+  hovercolor: props.hovercolor || '#f9ffff',
   fontSize: props.fontSize || '16px',
   display: props.display || 'inline',
 }))`
@@ -13,6 +13,6 @@ export default styled.a.attrs(props => ({
   transition: .05s ease-in-out;
   
   &:hover {
-    color: ${props => props.hoverColor};
+    color: ${props => props.hovercolor};
   }
 `

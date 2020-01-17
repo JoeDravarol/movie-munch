@@ -16,6 +16,13 @@ const getMovies = async (moviesType, pageToGet) => {
   return response.data
 }
 
+// Use to match genres id, so genre name can be display with movie list
+const getAllMovieGenres = async () => {
+  const response = await instance.get('genre/movie/list')
+  return response.data.genres
+}
+
 export default {
-  getMovies
+  getMovies,
+  getAllMovieGenres,
 }

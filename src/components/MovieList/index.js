@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import Header from './Header'
 import MovieCard from '../MovieCard'
 import Heading from '../shared/Heading'
@@ -7,23 +8,27 @@ import Container from '../shared/Container'
 import MoviesContainer from './MoviesContainer'
 
 const MovieList = ({ movies, categoryTitle, categoryLink }) => {
+  const allGenresForMovie = useSelector(state => state.allGenresForMovie)
+
   const movieCards = () => {
     return movies.map((movie, idx) => {
       if (categoryLink && idx > 4) return null;
 
       return (
         <MovieCard
+          key={movie.title}
           title={movie.title}
           poster={`${'https://image.tmdb.org/t/p/w500' + movie.poster_path}`}
           rating={movie.vote_average}
-          genres={movie.genre_ids}
+          genreIds={movie.genre_ids}
+          allGenresForMovie={allGenresForMovie}
         />
       )
     })
   }
 
   if (categoryLink) return (
-    <Container as="section">
+    <Container key={`${categoryTitle} Movies`} as="section">
       <Header>
         <Heading.Two
           fontSize="32px"
@@ -34,7 +39,7 @@ const MovieList = ({ movies, categoryTitle, categoryLink }) => {
         <Link
           to={categoryLink}
           color="#f9ffff"
-          hoverColor="#2D2D35"
+          hovercolor="#2D2D35"
         >
           See All
         </Link>
@@ -46,7 +51,7 @@ const MovieList = ({ movies, categoryTitle, categoryLink }) => {
   )
 
   return (
-    <Container as="section">
+    <Container key={`${categoryTitle} Movies`} as="section">
       <Header>
         <Heading.Two
           fontSize="32px"

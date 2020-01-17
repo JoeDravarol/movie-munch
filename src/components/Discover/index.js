@@ -13,21 +13,25 @@ const Discover = (props) => {
   return (
     <>
       <MovieList
+        key="now_playing"
         movies={nowPlaying.movies}
         categoryTitle="Now Playing"
         categoryLink="/now_playing"
       />
       <MovieList
+        key="popular"
         movies={popular.movies}
         categoryTitle="Popular"
         categoryLink="/popular"
       />
       <MovieList
+        key="upcoming"
         movies={upcoming.movies}
         categoryTitle="Upcoming"
         categoryLink="/upcoming"
       />
       <MovieList
+        key="top_rated"
         movies={topRated.movies}
         categoryTitle="Top Rated"
         categoryLink="/top_rated"

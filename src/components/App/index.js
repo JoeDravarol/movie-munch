@@ -1,26 +1,32 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
+import ScrollMemory from 'react-router-scroll-memory'
+
 import GlobalStyles from './GlobalStyles';
 import Wrapper from './Wrapper'
 import Menu from '../Menu'
 import Container from '../shared/Container'
+import Routes from './Routes'
+
 import { getMovies } from '../../reducers/movieReducer';
-import Routes from '../Routes'
-import { BrowserRouter } from 'react-router-dom'
-import ScrollMemory from 'react-router-scroll-memory'
+import { initializeMoviesGenres } from '../../reducers/genresReducer'
 
 function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    function fetchAllMoviesType() {
+    function fetchData() {
+      // Intialize movies genres
+      dispatch(initializeMoviesGenres())
+
       // Initialize movies data
       dispatch(getMovies('now_playing'))
-      dispatch(getMovies('popular'))
-      dispatch(getMovies('upcoming'))
-      dispatch(getMovies('top_rated'))
+      // dispatch(getMovies('popular'))
+      // dispatch(getMovies('upcoming'))
+      // dispatch(getMovies('top_rated'))
     }
-    fetchAllMoviesType()
+    fetchData()
   }, [dispatch])
 
   return (
@@ -40,4 +46,4 @@ function App() {
   );
 }
 
-export default App;
+export default App
