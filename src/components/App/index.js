@@ -10,16 +10,12 @@ import Container from '../shared/Container'
 import Routes from './Routes'
 
 import { getMovies } from '../../reducers/movieReducer';
-import { initializeMoviesGenres } from '../../reducers/genresReducer'
 
 function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
     function fetchData() {
-      // Intialize movies genres
-      dispatch(initializeMoviesGenres())
-
       // Initialize movies data
       dispatch(getMovies('now_playing'))
       // dispatch(getMovies('popular'))

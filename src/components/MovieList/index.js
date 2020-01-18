@@ -1,5 +1,4 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import Header from './Header'
 import MovieCard from '../MovieCard'
 import Heading from '../shared/Heading'
@@ -8,7 +7,6 @@ import Container from '../shared/Container'
 import MoviesContainer from './MoviesContainer'
 
 const MovieList = ({ movies, categoryTitle, categoryLink }) => {
-  const allGenresForMovie = useSelector(state => state.allGenresForMovie)
 
   const movieCards = () => {
     return movies.map((movie, idx) => {
@@ -21,7 +19,6 @@ const MovieList = ({ movies, categoryTitle, categoryLink }) => {
           poster={`${'https://image.tmdb.org/t/p/w500' + movie.poster_path}`}
           rating={movie.vote_average}
           genreIds={movie.genre_ids}
-          allGenresForMovie={allGenresForMovie}
         />
       )
     })

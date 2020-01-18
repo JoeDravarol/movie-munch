@@ -1,10 +1,14 @@
 import React from 'react'
 import Link from './Link'
+import useAllGenresForMovie from '../../hooks/useAllGenresForMovie'
 
-const Genres = ({ genreIds, movieTitle, numOfIdsToSlice, allGenresForMovie }) => {
+const Genres = ({ genreIds, movieTitle, numOfIdsToSlice }) => {
+  const allGenresForMovie = useAllGenresForMovie()
   // Only grab two genre id
   genreIds = genreIds.slice(0, numOfIdsToSlice)
 
+  if (allGenresForMovie.length === 0) return null
+  
   const genreIdToName = () => {
     return genreIds.map(id =>
       allGenresForMovie.find(genre => genre.id === id)

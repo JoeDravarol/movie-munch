@@ -5,7 +5,7 @@ import Paragraph from '../shared/Paragraph'
 import Container from './Container'
 import Genres from '../shared/Genres'
 
-const MovieCard = ({ title, poster, genreIds, rating, allGenresForMovie }) => {
+const MovieCard = ({ title, poster, genreIds, rating }) => {
 
   return (
     <Container>
@@ -17,7 +17,6 @@ const MovieCard = ({ title, poster, genreIds, rating, allGenresForMovie }) => {
         genreIds={genreIds}
         numOfIdsToSlice={2}
         movieTitle={title}
-        allGenresForMovie={allGenresForMovie}
       />
       <Paragraph>&#9733; {rating}</Paragraph>
     </Container>
