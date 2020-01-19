@@ -3,7 +3,7 @@ import {
   Route,
   Redirect, Switch
 } from 'react-router-dom'
-import Discover from '../Discover'
+import Discover from '../Pages/Discover'
 import NowPlaying from '../Pages/NowPlaying'
 import Popular from '../Pages/Popular'
 import Upcoming from '../Pages/Upcoming'

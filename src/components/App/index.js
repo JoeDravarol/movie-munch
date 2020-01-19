@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import ScrollMemory from 'react-router-scroll-memory'
 
 import GlobalStyles from './GlobalStyles';
-import Wrapper from './Wrapper'
+import Grid from '../shared/Grid'
 import Menu from '../Menu'
 import Container from '../shared/Container'
 import Routes from './Routes'
@@ -26,7 +26,9 @@ function App() {
   }, [dispatch])
 
   return (
-    <Wrapper>
+    <Grid
+      columns="minmax(200px, 250px) 1fr"
+    >
       <BrowserRouter>
         <ScrollMemory />
         <GlobalStyles />
@@ -38,7 +40,7 @@ function App() {
           <Routes />
         </Container>
       </BrowserRouter>
-    </Wrapper>
+    </Grid>
   );
 }
 
