@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux'
+import React from 'react';
 import { BrowserRouter } from 'react-router-dom'
 import ScrollMemory from 'react-router-scroll-memory'
 
@@ -9,21 +8,14 @@ import Menu from '../Menu'
 import Container from '../shared/Container'
 import Routes from './Routes'
 
-import { getMovies } from '../../reducers/movieReducer';
+import useInitializeMovie from '../../hooks/useInitializeMovie'
 
 function App() {
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    function fetchData() {
-      // Initialize movies data
-      dispatch(getMovies('now_playing'))
-      // dispatch(getMovies('popular'))
-      // dispatch(getMovies('upcoming'))
-      // dispatch(getMovies('top_rated'))
-    }
-    fetchData()
-  }, [dispatch])
+  // Initialize Movies
+  useInitializeMovie('now_playing')
+  // useInitializeMovie('popular')
+  // useInitializeMovie('upcoming')
+  // useInitializeMovie('top_rated')
 
   return (
     <Grid
