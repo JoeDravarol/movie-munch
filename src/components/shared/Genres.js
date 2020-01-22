@@ -18,7 +18,7 @@ const Genres = ({ genreIds, movieTitle, numOfIdsToSlice }) => {
   const genreList = () => {
     const genreNames = genreIdToName()
     // Add comma between each genre name
-    const genreNamesWithComma = genreNames.map(genre => genre.name).join(", ").split(" ")
+    const genreNamesWithComma = genreNames.map(genre => genre.name).join(",$ ").split("$")
 
     return genreIds.map((id, idx) =>
       <Link
@@ -26,7 +26,7 @@ const Genres = ({ genreIds, movieTitle, numOfIdsToSlice }) => {
         to={`/genres/${genreNames[idx]}`}
         fontSize="14px"
         color="#f9ffff"
-        hovercolor="#2D2D35"
+        hovercolor="#9D9D95"
       >
         {genreNamesWithComma[idx]}
       </Link>
