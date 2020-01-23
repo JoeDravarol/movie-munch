@@ -7,12 +7,13 @@ import Grid from '../shared/Grid'
 import Menu from '../Menu'
 import Container from '../shared/Container'
 import Routes from './Routes'
+import SearchMovie from '../SearchMovie'
 
 import useInitializeMovie from '../../hooks/useInitializeMovie'
 
 function App() {
   // Initialize Movies
-  useInitializeMovie('now_playing')
+  // useInitializeMovie('now_playing')
   // useInitializeMovie('popular')
   // useInitializeMovie('upcoming')
   // useInitializeMovie('top_rated')
@@ -29,6 +30,7 @@ function App() {
           as="main"
           margin="0 60px 30px"
         >
+          <SearchMovie />
           <Routes />
         </Container>
       </BrowserRouter>
