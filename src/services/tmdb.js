@@ -22,7 +22,18 @@ const getAllMovieGenres = async () => {
   return response.data.genres
 }
 
+const searchMovie = async (query, pageToGet) => {
+  const response = await instance.get('/search/movie', {
+    params: {
+      query,
+      page: pageToGet
+    }
+  })
+  return response.data
+}
+
 export default {
   getMovies,
   getAllMovieGenres,
+  searchMovie
 }
