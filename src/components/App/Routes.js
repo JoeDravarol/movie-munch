@@ -8,6 +8,7 @@ import NowPlaying from '../Pages/NowPlaying'
 import Popular from '../Pages/Popular'
 import Upcoming from '../Pages/Upcoming'
 import TopRated from '../Pages/TopRated'
+import Search from '../Pages/Search'
 
 const Routes = (props) => {
   return (
@@ -18,6 +19,7 @@ const Routes = (props) => {
         <Route path="/popular" component={Popular} />
         <Route path="/upcoming" component={Upcoming} />
         <Route path="/top_rated" component={TopRated} />
+        <Route path="/search" component={Search} />
         <Redirect from="*" to="/" />
       </Switch>
     </>
