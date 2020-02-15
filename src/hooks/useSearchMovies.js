@@ -6,17 +6,40 @@ export default (movieQuery) => {
   const [currentPage, setCurrentPage] = useState(0)
   const [totalPages, setTotalPages] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
+  const [cacheQuery, setCacheQuery] = useState(movieQuery)
 
   useEffect(() => {
-    const fetchMovies = async () => {
-      const { page, results, total_pages } = await tmdbApi.searchMovie(movieQuery, 1)
-      setMovies(results)
-      setCurrentPage(page)
-      setTotalPages(total_pages)
-      setIsLoading(false)
+    const initializeSearchMovie = async () => {
+      const { page, results, total_pages } = await fetchMovies(movieQuery, 1)
+      updateStates(results, page, total_pages)
     }
-    fetchMovies()
+
+    initializeSearchMovie()
   }, [movieQuery])
+
+  const fetchMovies = async (movieQuery, pageToGet) => {
+    setIsLoading(true)
+    const results = await tmdbApi.searchMovie(movieQuery, pageToGet)
+    setIsLoading(false)
+
+    return results
+  }
+
+  const updateStates = (movies, currentPage, totalPages) => {
+    setMovies(movies)
+    setCurrentPage(currentPage)
+
+    if (totalPages)
+      setTotalPages(totalPages)
+  }
+
+  const fetchMoreMovies = async () => {
+    if (movieQuery === cacheQuery) {
+      const { page, results } = await fetchMovies(movieQuery, currentPage + 1)
+      const moreMovies = [...movies, ...results]
+      updateStates(moreMovies, page)
+    }
+  }
 
   const result = {
     movies,
@@ -27,6 +50,6 @@ export default (movieQuery) => {
   return {
     result,
     isLoading,
-    setCurrentPage
+    fetchMoreMovies
   }
 }

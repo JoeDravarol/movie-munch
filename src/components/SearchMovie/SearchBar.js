@@ -19,7 +19,7 @@ const SearchBar = (props) => {
       history.push(`/search/${movieToQuery}`)
     }
 
-    e.taget.movieQuery.value = ''
+    e.target.movieQuery.value = ''
   }
 
   return (

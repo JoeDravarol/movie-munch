@@ -1,10 +1,16 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import MovieList from '../../MovieList'
 import LoadMore from '../../shared/LoadMore'
+import { getMovies } from '../../../reducers/movieReducer'
 
 const NowPlaying = (props) => {
   const nowPlaying = useSelector(state => state.nowPlaying)
+  const dispatch = useDispatch()
+
+  const handleLoadMore = () => {
+    dispatch(getMovies('now_playing', nowPlaying.currentPage + 1))
+  }
 
   return (
     <>
@@ -12,9 +18,8 @@ const NowPlaying = (props) => {
         movies={nowPlaying.movies}
         categoryTitle="Now Playing"
       />
-      <LoadMore 
-        movieType="now_playing"
-        initialPage={nowPlaying.currentPage}
+      <LoadMore
+        handleLoadMore={handleLoadMore}
       />
     </>
   )

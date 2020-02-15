@@ -10,33 +10,26 @@ const SearchMovie = ({ location }) => {
   const {
     result,
     isLoading,
-    setCurrentPage
+    fetchMoreMovies
   } = useSearchMovies(query)
 
-  console.log(result, query)
+  if (isLoading && !result.movies.length) {
+    return <p>Loading...</p>
+  } else if (!result.movies.length) {
+    return <p>No Movies found...</p>
+  }
+
   return (
     <>
-      {
-        isLoading ? (
-          <p>Loading...</p>
-        ) : !result.movies.length ? (
-          <p>No movies found</p>
-        ) : (<>
-          <MovieList
-            movies={result.movies}
-            categoryTitle={query}
-          />
-          {
-            result.currentPage !== result.totalPages && (
-              <LoadMore
-                movieType={query}
-                initialPage={result.currentPage}
-                onClick={() => setCurrentPage(prevPage => prevPage++)}
-              />
-            )
-          }
-        </>)
-      }
+      <MovieList
+        movies={result.movies}
+        categoryTitle={query}
+      />
+      {result.currentPage < result.totalPages && (
+        <LoadMore
+          handleLoadMore={fetchMoreMovies}
+        />
+      )}
     </>
   )
 }

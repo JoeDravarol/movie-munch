@@ -1,10 +1,16 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import MovieList from '../../MovieList'
 import LoadMore from '../../shared/LoadMore'
+import { getMovies } from '../../../reducers/movieReducer'
 
 const TopRated = (props) => {
   const topRated = useSelector(state => state.topRated)
+  const dispatch = useDispatch()
+
+  const handleLoadMore = () => {
+    dispatch(getMovies('top_rated', topRated.currentPage + 1))
+  }
 
   return (
     <>
@@ -13,8 +19,7 @@ const TopRated = (props) => {
         categoryTitle="Top Rated"
       />
       <LoadMore 
-        movieType="top_rated"
-        initialPage={topRated.currentPage}
+        handleLoadMore={handleLoadMore}
       />
     </>
   )
