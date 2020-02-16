@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
 
 import TmdbLogo from './TmdbLogo'
+import PopcornSvg from './PopcornSvg'
 
 const Logo = styled.h1`
   color: #F83646;
@@ -14,6 +15,13 @@ const Logo = styled.h1`
   font-size: 3.5em;
   margin-top: 10px;
   line-height: 1;
+
+  svg {
+    width: 35px;
+    height: 35px;
+    margin: 0;
+    padding: 0;
+  }
 
   span {
     display: block;
@@ -25,7 +33,8 @@ const Menu = ({ location }) => {
     <Nav>
       <header>
         <Logo>
-          Movie<span>Munch</span> 
+          <PopcornSvg />Movie
+          <span>Munch</span> 
         </Logo>
         <UlElem>
           <ListElem active={location.pathname === '/'}>
