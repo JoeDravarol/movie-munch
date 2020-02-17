@@ -3,13 +3,13 @@ import {
   Route,
   Redirect, Switch
 } from 'react-router-dom'
-import Discover from '../Pages/Discover'
-import NowPlaying from '../Pages/NowPlaying'
-import Popular from '../Pages/Popular'
-import Upcoming from '../Pages/Upcoming'
-import TopRated from '../Pages/TopRated'
-import Search from '../Pages/Search'
-import Movie from '../Pages/Movie'
+import Discover from '../../Pages/Discover'
+import NowPlaying from '../../Pages/NowPlaying'
+import Popular from '../../Pages/Popular'
+import Upcoming from '../../Pages/Upcoming'
+import TopRated from '../../Pages/TopRated'
+import Search from '../../Pages/Search'
+import Movie from '../../Pages/Movie'
 
 const Routes = (props) => {
   return (

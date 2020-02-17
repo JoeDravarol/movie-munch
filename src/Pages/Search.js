@@ -1,9 +1,9 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import useSearchMovies from '../../../hooks/useSearchMovies'
+import useSearchMovies from '../hooks/useSearchMovies'
 
-import MovieList from '../../MovieList'
-import LoadMore from '../../shared/LoadMore'
+import MovieList from '../components/MovieList'
+import LoadMore from '../components/shared/LoadMore'
 
 const SearchMovie = ({ location }) => {
   const query = getMovieQuery(location.pathname)

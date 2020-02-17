@@ -1,8 +1,8 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getMovies } from '../../../reducers/movieReducer'
-import MovieList from '../../MovieList'
-import LoadMore from '../../shared/LoadMore'
+import { getMovies } from '../reducers/movieReducer'
+import MovieList from '../components/MovieList'
+import LoadMore from '../components/shared/LoadMore'
 
 const Popular = (props) => {
   const popular = useSelector(state => state.popular)
