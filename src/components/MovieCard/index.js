@@ -4,11 +4,19 @@ import Heading from '../shared/Heading'
 import Paragraph from '../shared/Paragraph'
 import Container from './Container'
 import Genres from '../shared/Genres'
+import Link from '../shared/Link'
+import styled from 'styled-components'
 
-const MovieCard = ({ title, poster, genreIds, rating }) => {
+const MyLink = styled(Link)`
+  transition: .2s ease-in-out;
+  &:hover {
+    transform: scale(1.02);
+  }
+`
+const MovieCard = ({ id, title, poster, genreIds, rating }) => {
 
   return (
-    <Container>
+    <MyLink to={`/movie/${id}`}>
       <Poster src={poster} alt={`${title}'s movie poster`} />
       <Heading.Three fontSize='18px' noMargin>
         {title}
@@ -19,7 +27,7 @@ const MovieCard = ({ title, poster, genreIds, rating }) => {
         movieTitle={title}
       />
       <Paragraph>&#9733; {rating}</Paragraph>
-    </Container>
+    </MyLink>
   )
 }
 

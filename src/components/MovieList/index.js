@@ -14,7 +14,8 @@ const MovieList = ({ movies, categoryTitle, categoryLink }) => {
 
       return (
         <MovieCard
-          key={movie.title}
+          key={movie.id}
+          id={movie.id}
           title={movie.title}
           poster={`${'https://image.tmdb.org/t/p/w500' + movie.poster_path}`}
           rating={movie.vote_average}

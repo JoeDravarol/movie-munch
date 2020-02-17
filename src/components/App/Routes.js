@@ -9,6 +9,7 @@ import Popular from '../Pages/Popular'
 import Upcoming from '../Pages/Upcoming'
 import TopRated from '../Pages/TopRated'
 import Search from '../Pages/Search'
+import Movie from '../Pages/Movie'
 
 const Routes = (props) => {
   return (
@@ -20,6 +21,7 @@ const Routes = (props) => {
         <Route path="/upcoming" component={Upcoming} />
         <Route path="/top_rated" component={TopRated} />
         <Route path="/search" component={Search} />
+        <Route path="/movie/:id" component={Movie} />
         <Redirect from="*" to="/" />
       </Switch>
     </>
