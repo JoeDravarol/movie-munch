@@ -10,7 +10,7 @@ const Container = styled.div`
   margin: 0 auto;
   justify-content: center;
   color: #FFF;
-  max-width: 1500px;
+  max-width: 1395px;
   min-height: 450px;
 `
 

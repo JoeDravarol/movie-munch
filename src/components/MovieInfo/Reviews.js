@@ -3,7 +3,8 @@ import styled from 'styled-components'
 import textShortener from '../../utils/textShortener'
 
 const Container = styled.div`
-  max-width: 1500px;
+  max-width: 1300px;
+  margin-top: 2em;
   padding: 0 5em;
   color: #fff;
 `

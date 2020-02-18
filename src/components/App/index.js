@@ -1,15 +1,22 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom'
 import ScrollMemory from 'react-router-scroll-memory'
+import styled from 'styled-components'
 
 import GlobalStyles from './GlobalStyles';
-import Grid from '../shared/Grid'
+import Flex from '../shared/Flex'
 import Menu from '../Menu'
-import Container from '../shared/Container'
 import Routes from './Routes'
 import SearchMovie from '../SearchMovie'
 
 import useInitializeMovie from '../../hooks/useInitializeMovie'
+
+const Main = styled.main`
+  margin: 0 60px 30px;
+  flex-grow: 1;
+  width: auto;
+  height: auto;
+`
 
 function App() {
   // Initialize Movies
@@ -19,22 +26,17 @@ function App() {
   // useInitializeMovie('top_rated')
 
   return (
-    <Grid
-      columns="minmax(200px, 250px) 1fr"
-    >
+    <Flex>
       <BrowserRouter>
         <ScrollMemory />
         <GlobalStyles />
         <Menu />
-        <Container
-          as="main"
-          margin="0 60px 30px"
-        >
+        <Main>
           <SearchMovie />
           <Routes />
-        </Container>
+        </Main>
       </BrowserRouter>
-    </Grid>
+    </Flex>
   );
 }
 
