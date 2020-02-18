@@ -17,7 +17,7 @@ export default styled.form`
   transition: width 250ms ease-in-out;
 
   &:focus-within {
-    width: 50%;
+    width: 35%;
 
     input[type] {
       width: calc(100% - 80px);

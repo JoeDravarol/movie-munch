@@ -20,10 +20,10 @@ const Main = styled.main`
 
 function App() {
   // Initialize Movies
-  // useInitializeMovie('now_playing')
-  // useInitializeMovie('popular')
-  // useInitializeMovie('upcoming')
-  // useInitializeMovie('top_rated')
+  useInitializeMovie('now_playing')
+  useInitializeMovie('popular')
+  useInitializeMovie('upcoming')
+  useInitializeMovie('top_rated')
 
   return (
     <Flex>
