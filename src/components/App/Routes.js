@@ -20,7 +20,7 @@ const Routes = (props) => {
         <Route path="/popular" component={Popular} />
         <Route path="/upcoming" component={Upcoming} />
         <Route path="/top_rated" component={TopRated} />
-        <Route path="/search" component={Search} />
+        <Route path="/search/:query" component={Search} />
         <Route path="/movie/:id" component={Movie} />
         <Redirect from="*" to="/" />
       </Switch>

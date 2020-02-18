@@ -1,29 +1,37 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, useParams } from 'react-router-dom'
 import useSearchMovies from '../hooks/useSearchMovies'
+import styled from 'styled-components'
 
 import MovieList from '../components/MovieList'
 import LoadMore from '../components/shared/LoadMore'
 
-const SearchMovie = ({ location }) => {
-  const query = getMovieQuery(location.pathname)
+const NoMovieFound = styled.p`
+  font-size: 5em;
+  color: #fff;
+`
+
+const SearchMovie = () => {
+  const { query } = useParams()
+  const queryWithSpaces = changePlusBackToSpaces(query)
+
   const {
     result,
     isLoading,
     fetchMoreMovies
-  } = useSearchMovies(query)
+  } = useSearchMovies(queryWithSpaces)
 
   if (isLoading && !result.movies.length) {
     return <p>Loading...</p>
   } else if (!result.movies.length) {
-    return <p>No Movies found...</p>
+    return <NoMovieFound>No Movies found...</NoMovieFound>
   }
 
   return (
     <>
       <MovieList
         movies={result.movies}
-        categoryTitle={query}
+        categoryTitle={queryWithSpaces}
       />
       {result.currentPage < result.totalPages && (
         <LoadMore
@@ -34,10 +42,7 @@ const SearchMovie = ({ location }) => {
   )
 }
 
-function getMovieQuery(pathname) {
-  // Remove '/seach/' to get movie to query
-  const query = pathname.substring(8)
-  // Change plus back to space
+function changePlusBackToSpaces(query) {
   return query.split("+").join(" ")
 }
 
