@@ -2,7 +2,7 @@
 
 Browse the latest films or search for specific movies and find its information and reviews.
 
-[Demo](pointless-movie-munch.surge.sh)
+[Demo](http://pointless-movie-munch.surge.sh/)
 
 ## Built With
 
