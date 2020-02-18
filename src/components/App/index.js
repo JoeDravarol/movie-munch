@@ -26,7 +26,7 @@ function App() {
   useInitializeMovie('top_rated')
 
   return (
-    <Flex>
+    <Flex noWrap>
       <BrowserRouter>
         <ScrollMemory />
         <GlobalStyles />
