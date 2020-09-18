@@ -1,13 +1,21 @@
 import React from 'react'
-import Nav from './Nav'
-import UlElem from './UlElem'
-import ListElem from './ListElem'
-import Link from './Link'
 import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
 
+import Link from '../shared/Link'
 import TmdbLogo from './TmdbLogo'
 import PopcornSvg from './PopcornSvg'
+
+const StyledNav = styled.nav`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  width: 20%;
+  max-width: 250px;
+  position: sticky;
+  top: 0;
+`
 
 const Logo = styled.h1`
   color: #F83646;
@@ -28,35 +36,67 @@ const Logo = styled.h1`
   }
 `
 
+const StyledUl = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+`
+
+const StyledList = styled.li`
+  padding: 15px;
+  color: #848e94;
+  border-left: 5px solid transparent;
+
+  ${({ active }) => active && `
+    border-left: 5px solid #238771;
+    background: #2b3c46;
+    color: #f9ffff;
+  `}
+`
+
+const StyledLink =  styled(Link).attrs(props => ({
+  fontSize: '18px',
+  display: 'block'
+}))`
+  margin-left: 45%;
+  transform: translate(-45%);
+`
+
 const Menu = ({ location }) => {
   return (
-    <Nav>
+    <StyledNav>
       <header>
         <Logo>
           <PopcornSvg />Movie
           <span>Munch</span> 
         </Logo>
-        <UlElem>
-          <ListElem active={location.pathname === '/'}>
-            <Link to="/">Discover</Link>
-          </ListElem>
-          <ListElem active={location.pathname === '/now_playing'}>
-            <Link to="/now_playing">Now Playing</Link>
-          </ListElem>
-          <ListElem active={location.pathname === '/popular'}>
-            <Link to="/popular">Popular</Link>
-          </ListElem>
-          <ListElem active={location.pathname === '/upcoming'}>
-            <Link to="/upcoming">Upcoming</Link>
-          </ListElem>
-          <ListElem active={location.pathname === '/top_rated'}>
-            <Link to="/top_rated">Top Rated</Link>
-          </ListElem>
-        </UlElem>
+        <StyledUl>
+          <StyledList active={location.pathname === '/'}>
+            <StyledLink to="/">Discover</StyledLink>
+          </StyledList>
+
+          <StyledList active={location.pathname === '/now_playing'}>
+            <StyledLink to="/now_playing">Now Playing</StyledLink>
+          </StyledList>
+
+          <StyledList active={location.pathname === '/popular'}>
+            <StyledLink to="/popular">Popular</StyledLink>
+          </StyledList>
+
+          <StyledList active={location.pathname === '/upcoming'}>
+            <StyledLink to="/upcoming">Upcoming</StyledLink>
+          </StyledList>
+
+          <StyledList active={location.pathname === '/top_rated'}>
+            <StyledLink to="/top_rated">Top Rated</StyledLink>
+          </StyledList>
+        </StyledUl>
       </header>
       
       <TmdbLogo />
-    </Nav>
+    </StyledNav>
   )
 }
 
