@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
 
+import Hamburger from './Hamburger'
 import Link from '../shared/Link'
 import TmdbLogo from './TmdbLogo'
 import PopcornSvg from './PopcornSvg'
@@ -11,10 +12,20 @@ const StyledNav = styled.nav`
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
-  width: 20%;
-  max-width: 250px;
+  width: 250px;
   position: sticky;
   top: 0;
+  transition: transform 0.3s ease-in-out;
+
+  @media (max-width: 800px) {
+    width: 270px;
+    background: #405463;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-100%)")};
+  }
 `
 
 const Logo = styled.h1`
@@ -33,6 +44,10 @@ const Logo = styled.h1`
 
   span {
     display: block;
+  }
+
+  @media (max-width: 800px) {
+    font-size: 2.5em;
   }
 `
 
@@ -62,11 +77,20 @@ const StyledLink =  styled(Link).attrs(props => ({
 }))`
   margin-left: 45%;
   transform: translate(-45%);
+
+  @media (max-width: 800px) {
+    font-size: 16px;
+  }
 `
 
 const Menu = ({ location }) => {
+  const [open,setOpen] = useState(false)
+
   return (
-    <StyledNav>
+    <>
+    <Hamburger toggleOpen={() => setOpen(prevState => !prevState)}/>
+
+    <StyledNav open={open}>
       <header>
         <Logo>
           <PopcornSvg />Movie
@@ -97,6 +121,7 @@ const Menu = ({ location }) => {
       
       <TmdbLogo />
     </StyledNav>
+    </>
   )
 }
 
