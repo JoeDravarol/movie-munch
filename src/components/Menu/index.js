@@ -17,6 +17,7 @@ const StyledNav = styled.nav`
   position: sticky;
   top: 0;
   transition: transform 0.3s ease-in-out;
+  z-index: 3;
 
   @media (max-width: 800px) {
     width: 270px;

@@ -21,7 +21,7 @@ const StyledForm = styled.form`
   transition: width 250ms ease-in-out;
 
   &:focus-within {
-    width: 35%;
+    width: 300px;
 
     input[type] {
       width: calc(100% - 80px);
@@ -41,6 +41,18 @@ const StyledForm = styled.form`
       }
     }
   }
+
+  @media (max-width: 800px) {
+    &:focus-within {
+      width: 250px;
+    }
+  }
+
+  @media (min-width: 1600px) {
+    &:focus-within {
+      width: 30%;
+    }
+  }
 `
 
 const StyledSearchBtn = styled.button`
@@ -56,7 +68,7 @@ const StyledSearchBtn = styled.button`
   transition: background 200ms ease-out;
 `
 
-const StyledSearchInput =styled.input.attrs(props => ({
+const StyledSearchInput = styled.input.attrs(props => ({
   type: 'text',
   placeholder: 'Search for a movie...'
 }))`
@@ -79,6 +91,10 @@ const StyledSearchInput =styled.input.attrs(props => ({
   &::placeholder {
     color: #fff;
     opacity: 1;
+  }
+
+  @media (max-width: 800px) {
+    font-size: .75em;
   }
 `
 
