@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
+import useOnClickOutside from '../../hooks/useOnClickOutside'
 
 import Hamburger from './Hamburger'
 import Link from '../shared/Link'
@@ -85,43 +86,45 @@ const StyledLink =  styled(Link).attrs(props => ({
 
 const Menu = ({ location }) => {
   const [open,setOpen] = useState(false)
+  const containerRef = useRef();
+  useOnClickOutside(containerRef, () => setOpen(false))
 
   return (
-    <>
-    <Hamburger toggleOpen={() => setOpen(prevState => !prevState)}/>
+    <div ref={containerRef}>
+      <Hamburger toggleOpen={() => setOpen(prevState => !prevState)}/>
 
-    <StyledNav open={open}>
-      <header>
-        <Logo>
-          <PopcornSvg />Movie
-          <span>Munch</span> 
-        </Logo>
-        <StyledUl>
-          <StyledList active={location.pathname === '/'}>
-            <StyledLink to="/">Discover</StyledLink>
-          </StyledList>
+      <StyledNav open={open}>
+        <header>
+          <Logo>
+            <PopcornSvg />Movie
+            <span>Munch</span> 
+          </Logo>
+          <StyledUl>
+            <StyledList active={location.pathname === '/'}>
+              <StyledLink to="/">Discover</StyledLink>
+            </StyledList>
 
-          <StyledList active={location.pathname === '/now_playing'}>
-            <StyledLink to="/now_playing">Now Playing</StyledLink>
-          </StyledList>
+            <StyledList active={location.pathname === '/now_playing'}>
+              <StyledLink to="/now_playing">Now Playing</StyledLink>
+            </StyledList>
 
-          <StyledList active={location.pathname === '/popular'}>
-            <StyledLink to="/popular">Popular</StyledLink>
-          </StyledList>
+            <StyledList active={location.pathname === '/popular'}>
+              <StyledLink to="/popular">Popular</StyledLink>
+            </StyledList>
 
-          <StyledList active={location.pathname === '/upcoming'}>
-            <StyledLink to="/upcoming">Upcoming</StyledLink>
-          </StyledList>
+            <StyledList active={location.pathname === '/upcoming'}>
+              <StyledLink to="/upcoming">Upcoming</StyledLink>
+            </StyledList>
 
-          <StyledList active={location.pathname === '/top_rated'}>
-            <StyledLink to="/top_rated">Top Rated</StyledLink>
-          </StyledList>
-        </StyledUl>
-      </header>
-      
-      <TmdbLogo />
-    </StyledNav>
-    </>
+            <StyledList active={location.pathname === '/top_rated'}>
+              <StyledLink to="/top_rated">Top Rated</StyledLink>
+            </StyledList>
+          </StyledUl>
+        </header>
+        
+        <TmdbLogo />
+      </StyledNav>
+    </div>
   )
 }
 
