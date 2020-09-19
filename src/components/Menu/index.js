@@ -19,7 +19,7 @@ const StyledNav = styled.nav`
   transition: transform 0.3s ease-in-out;
   z-index: 3;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     width: 270px;
     background: #405463;
     position: absolute;
