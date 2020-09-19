@@ -12,12 +12,36 @@ const Container = styled.div`
   color: #FFF;
   max-width: 1390px;
   min-height: 450px;
+
+  @media (max-width: 750px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
-const Img = styled.img`
+const PosterImage = styled.img`
+  display: none;
   width: 100%;
+  min-width: 350px;
   max-width: 400px;
   border-radius: 10px;
+  object-fit: cover;
+  object-position: center;
+
+  @media (min-width: 750px) {
+    display: block;
+  }
+`
+
+const BackdropImage = styled.img`
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: 1em;
+
+  @media (min-width: 750px) {
+    display: none;
+  }
 `
 
 const Title = styled.h2`
@@ -31,6 +55,10 @@ const Content = styled.div`
   max-width: 900px;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 750px) {
+    padding: 0;
+  }
 `
 
 const GenreUl = styled.ul`
@@ -53,6 +81,10 @@ const SynopsisDesc = styled.p`
   font-size: 1.1em;
   color: #adbec8;
   line-height: 1.4;
+
+  @media (max-width: 800px) {
+    font-size: 0.9em;
+  }
 `
 
 const BackBtn = styled.button`
@@ -75,10 +107,12 @@ const BackBtn = styled.button`
 
 const Info = ({ data }) => {
   const history = useHistory()
+  const baseImageUrl = 'https://image.tmdb.org/t/p/w780'
 
   return (
     <Container>
-      <Img class="movie__img" src={`https://image.tmdb.org/t/p/w780${data.poster_path}`} alt={`${data.title}'s poster`} />
+      <BackdropImage src={baseImageUrl + data.backdrop_path} alt={`${data.title}'s backdrop poster`} />
+      <PosterImage src={baseImageUrl + data.poster_path} alt={`${data.title}'s poster`} />
 
       <Content>
         <header>

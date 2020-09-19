@@ -30,6 +30,10 @@ const CardDesc = styled.p`
   color: #adbec8;
   font-size: 1.1em;
   line-height: 1.4;
+
+  @media (max-width: 800px) {
+    font-size: 0.9em;
+  }
 `
 
 const CardLink = styled.a`
